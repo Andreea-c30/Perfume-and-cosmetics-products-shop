@@ -1,0 +1,32 @@
+p,a{
+  
+    font-family: "Times New Roman", Times, serif;
+  color: black;
+}
+h2,h5{
+  margin-left: 5cm;
+  font-family: Georgia, 'Times New Roman', Times, serif
+
+}
+.back{
+  background-color: rgb(248, 209, 238);
+}
+
+.imgstyle{
+    width: 200px;
+height: 200px;
+
+}
+ul {
+    list-style-type: none;
+    margin: 1cm;
+    padding: 0;
+  }
+.subtext{
+    color: rgb(62, 65, 65);
+    font-size: 12px;
+    margin-left: 1cm;
+}
+.text{
+    margin-top: 0cm;
+}

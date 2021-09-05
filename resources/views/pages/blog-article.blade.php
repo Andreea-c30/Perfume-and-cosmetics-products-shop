@@ -11,11 +11,9 @@
 When it comes to skin care, your lips don’t often get the pampering they deserve. While you might stay on top of the latest lipstick shades and formulas, that doesn’t mean you’re giving your lips all the TLC they need. Sure, there may be a lip balm or two tucked inside your purse or lying around in your bathroom shelf, but if you really want to get serious about maintaining a perfect pout, it’s time to take a closer look at your lip products.
 </p>
 
-  <h2 class="text-center">Why Lip Care Is Important</h2>
+  <h2 class="text-center">{{$article->title}}</h2>
   <hr>
-<p>Just like your skin, your lips needs consistent care. That’s because your lips don’t have sweat or oil glands, which means they don’t get the added protection that your skin’s natural moisture provides.</p>
-<p>This is also why they are prone to chapping, cracking, and feeling dry. Not to mention, they are made of the thinnest skin in your body, making them even more susceptible to damage when exposed to the elements and the sun.</p>
-
+<p> {{$article->body}}</p>
 <h2 class="text-center">
 How to Choose the Right Lip Products
 </h2>

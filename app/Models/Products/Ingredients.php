@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Products;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,14 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Ingredients extends Model
 {
     use HasFactory;
-    protected $attributes=[
-        'name'=>'water',
-        'quantity'=>0,
-
-    ];
+    public $timestamps=false;
     protected $fillable=[
         'name',
-        'quantity',
     ];
     public function product_details()
     {

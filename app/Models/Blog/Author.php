@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Blog;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,23 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Author extends Model
 {
     use HasFactory;
-    protected $attributes=[
-        'first_name'=>' Joe',
-        'last_name '=>' Don',
-        'email'=>'user@gmail.com ',
-    ];
+   
     protected $fillable=[
         'first_name',
         'last_name',
         'email',
         'phone',
-	
     ];
-    public function comment()
+
+    public function comments()
     {
-        return $this->belongsTo(Comment::class);
+        return $this->hasMany(Comment::class);
     }
-    public function article()
+    
+    public function articles()
     {
         return $this->hasMany(Article::class);
     }

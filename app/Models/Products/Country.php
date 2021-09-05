@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Products;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,15 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Country extends Model
 {
     use HasFactory;
-    const UPDATED_AT = 'last_update';
-    
-    protected $attributes=[
-        'name'=>'Unknown',
-    ];
+    public $timestamps=false;
     protected $fillable=[
         'name',
     ];
-    public function brand()
+
+    public function brands()
     {
         return $this->hasMany(Brand::class);
     }

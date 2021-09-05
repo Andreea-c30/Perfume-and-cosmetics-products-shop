@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Blog;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,14 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     use HasFactory;
-    protected $attributes=[
-        'title'=>' Article 1',
-        'body '=>' This is the content of the article',
-        'description'=>'This article has no description ',
-        'author_id '=>'01',
-        'category_id'=>'01',
-        
-    ];
+    public $timestamps=false;
     protected $fillable=[
         'title',
         'body',
@@ -25,19 +18,23 @@ class Article extends Model
         'author_id',
         'category_id',
     ];
-    public function comment()
+
+    public function comments()
     {
         return $this->hasMany(Comment::class);
     }
+
     public function author()
     {
         return $this->belongsTo(Author::class);
     }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
-    public function tag()
+    
+    public function tags()
     {
         return $this->belongsToMany(Tag::class);
     }

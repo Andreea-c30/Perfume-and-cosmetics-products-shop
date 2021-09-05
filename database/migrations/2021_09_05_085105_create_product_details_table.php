@@ -14,13 +14,11 @@ class CreateProductDetailsTable extends Migration
     public function up()
     {
         Schema::create('product_details', function (Blueprint $table) {
-           
                 $table->id();
-                $table->integer('volume');
+                $table->integer('volume')->unsigned();
                 $table->string('flavor',255);
                 $table->text('Directions_for_use')->nullable('false');
                 $table->timestamps();
-           
         });
     }
 

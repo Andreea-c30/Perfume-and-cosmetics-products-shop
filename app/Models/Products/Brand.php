@@ -1,22 +1,26 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Products;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categories extends Model
+class Brand extends Model
 {
     use HasFactory;
-    protected $attributes=[
-        'name'=>'beauty product',
-    ];
+    public $timestamps=false;
     protected $fillable=[
         'name',
+        'country_id',
     ];
 
-    public function product()
+    public function products()
     {
         return $this->hasMany(Products::class);
+    }
+
+    public function countries()
+    {
+        return $this->belongsTo(Country::class);
     }
 }
