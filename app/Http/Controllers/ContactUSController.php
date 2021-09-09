@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ContactUsRequest;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
-
+use Rules;
+use Mail;
 class ContactUSController extends Controller
 {
     public function contacts(Request $request)
@@ -17,23 +18,26 @@ class ContactUSController extends Controller
 
     public function storeContactInfo(ContactUsRequest $request)
     {
-      $contactsData = $request -> validated();
-      
+      $data = $request -> validated();
+      $data['messageText']=$data['message'];
       $callback=function($input='')
       {
         return $input . 'text';
       };
      
       //dd($request -> validated());
-   
-    \Log::debug($callback(),$request->all());
   
-   \Log::info($callback('Validated'),$request->validated());
+    //\Log::debug($callback(),$request->all());
+  
+   //\Log::info($callback('Validated'),$request->validated());
 
-   \Mail::raw(
-     'Test emails that is used to see data in Mailhog',
-     function(Message $message){
+   Mail::send(
+     'emails/contactUs',
+     $data,
+     function(Message $message)use($data){
 $message->to('test@test.com');
+$message->subject('Contact us request form '. $data['name'].' '.$data['email']);
+$message->replyTo($data['email']);
      }
    );
       return redirect(route('contactUs.show'));
