@@ -30,7 +30,7 @@ Route::get('/blog/article/{articleId}',[BlogController ::class,'show'])->name('a
 //Route::get('/contacts', function () {
  // return view('pages/contacts');
 //});
-Route::match(['get'], '/contacts', [ContactUSController::class, 'contacts']);
+Route::match(['get'], '/contacts', [ContactUSController::class, 'contacts'])->name('contactUs.show') ;
 Route::post('/store-contact-info', [ContactUSController::class, 'storeContactInfo']);
 
 Route::get('/manufacturer', [ManufacturerController::class, 'create'])->name('contactUs.store');

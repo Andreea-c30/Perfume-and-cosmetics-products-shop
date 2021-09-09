@@ -15,8 +15,8 @@ class BlogController extends Controller
     
 public function index()
 {
-    
-    return view('pages/blog-list',['articles'=>Article::all()]);
+    $articles = Article::paginate(5);
+    return view('pages/blog-list',['articles'=>$articles]);
 }
 
 public function show(int $articleId)

@@ -19,6 +19,11 @@ class Article extends Model
         'category_id',
     ];
 
+     public function getImageUrlAttribute()
+    {
+    return \Illuminate\Support\Facades\Storage::url($this->image);
+     }
+     
     public function comments()
     {
         return $this->hasMany(Comment::class);
