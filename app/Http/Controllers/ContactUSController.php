@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactUsRequest;
+use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Rules;
@@ -16,7 +17,7 @@ class ContactUSController extends Controller
        return view('pages/contacts');
     }   
 
-    public function storeContactInfo(ContactUsRequest $request)
+    public function storeContactInfo(ContactUsRequest $request, Mailer $mailer)
     {
       $data = $request -> validated();
       $data['messageText']=$data['message'];
@@ -31,7 +32,7 @@ class ContactUSController extends Controller
   
    //\Log::info($callback('Validated'),$request->validated());
 
-   Mail::send(
+   $mailer->send(
      'emails/contactUs',
      $data,
      function(Message $message)use($data){
