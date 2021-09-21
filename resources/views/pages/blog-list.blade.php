@@ -9,15 +9,23 @@
   <h1>Blog article list</h1>
 </div>
    @foreach($articles as $article)
-<ul class="back">
-   <li class="list_item">
-   <div>
-       
 
+   <div class="row">
 
+<div class="leftcolumn">
+
+  <div class="card">
+ 
+
+  <div>
+       <ul>
+           <li class="list_item">
+  
     <h2>
-          <a href="{{route('article.show',['articleId'=>$article->id])}} "> {{$article->title}}  </a> 
-      </h2>
+          <a href="{{route('article.show',['articleId'=>$article->id])}} "> 
+             {{$article->title}} 
+          </a> 
+   </h2>
       <p >
          <img class="imgstyle" src="{{$article->image_url}} " alt="image not found">
        
@@ -34,12 +42,47 @@
 
  </div>
 
-@endforeach 
-     
+ </div>
+ </div>
+<div class="rightcolumn">
+  <div class="card">
    
-{{ $articles->links() }}
+    
+    <div>
+       <ul>
+           <li class="list_item">
   
-   
- 
+    <h2>
+          <a href="{{route('article.show',['articleId'=>$article->id])}} "> 
+             {{$article->title}} 
+          </a> 
+   </h2>
+      <p >
+         
+         {{$article->description}}
+     
+      </p>
+       
+<p class="subtext">
+   {{$article->published_at}} 
+</p>
+         
+   </li>
+</ul> 
 
+</div>
+ </div>
+
+    </div>
+  </div>
+ 
+</div>
+</div>
+
+@endforeach 
+
+ {{ $articles->links() }}
+
+
+  
 @endsection

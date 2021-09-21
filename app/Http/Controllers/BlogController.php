@@ -1,6 +1,8 @@
 <?php 
 namespace App\Http\Controllers;
 use App\Models\Blog\Article;
+use Illuminate\Pagination\Paginator;
+use App\Services\Logging\ViewLogger;
 class BlogController extends Controller
 {
     public function __construct(){
@@ -15,24 +17,18 @@ class BlogController extends Controller
     
 public function index()
 {
-    $articles = Article::paginate(5);
+    Paginator::useBootstrap();
+    $articles = Article::paginate(3);
     return view('pages/blog-list',['articles'=>$articles]);
 }
 
-public function show(int $articleId)
+public function show(int $articleId, ViewLogger $viewLogger)
 {
     $article=Article::findOrFail($articleId);
+
+    $viewLogger->logView($article);
+
     return view('pages/blog-article',['article'=>$article]);
-   /* $article=null;
-foreach($this->articles as $articleItem){
-    if($articleItem['id']===$articleId)
-    {
-        $article=$articleItem;
-    }
-}
-if(!$article){
-    abort(404);
-}
-    return view('pages/blog-article',['article'=>$article]);*/
+  
 }
 }

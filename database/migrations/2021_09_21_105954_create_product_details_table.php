@@ -6,11 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateProductDetailsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
+
     public function up()
     {
         Schema::create('product_details', function (Blueprint $table) {
@@ -19,8 +16,13 @@ class CreateProductDetailsTable extends Migration
                 $table->string('flavor',255);
                 $table->text('Directions_for_use')->nullable('false');
                 $table->timestamps();  
-        });
-    }   
+                $table->foreign('id')
+                  ->references('id')
+                  ->on('products')
+                  ->onDelete('CASCADE')
+                  ->onUpdate('CASCADE');        });
+    }    
+
     public function down()
     {
         Schema::dropIfExists('product_details');
