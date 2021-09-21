@@ -45,7 +45,7 @@
                         <div class="form-group">
 
                             <label for="name">Name</label>
-                            <input name="name" required="required" type="text" class="form-control" id="name" placeholder="Enter name" >
+                            <input name="name" value="{{old('name')}}" required="required" type="text" class="form-control" id="name" placeholder="Enter name" >
                       
                             @error('name')
     <div class="alert alert-danger">{{ $message }}</div>
@@ -53,7 +53,7 @@
                         </div>
                         <div class="form-group">
                             <label for="email">Email address</label>
-                            <input name="email" required="required"  class="form-control" id="email"  placeholder="Enter email" >
+                            <input value="{{old('email')}}" name="email" required="required"  class="form-control" id="email"  placeholder="Enter email" >
                             <small id="emailHelp" class="form-text text-muted">Your email is safe with us</small>
                            
                             @error('email')

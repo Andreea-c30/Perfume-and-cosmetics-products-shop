@@ -1,16 +1,17 @@
 <?php
 
 namespace App\Models\Products;
-
+use App\Models\LoggableInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Products extends Model
+class Products extends Model implements LoggableInterface
 {
     use HasFactory;
     public $timestamps=false;
     protected $fillable=[
         'name',
+        'image',
         'description',
         'product_details_id',
         'type_id',
@@ -19,6 +20,12 @@ class Products extends Model
         'available',
     ];
     
+    public function getImageUrlAttribute()
+    {
+    return \Illuminate\Support\Facades\Storage::url($this->image);
+     }
+     
+
     public function product_detail()
     {
         return $this->hasOne(Product_details::class);
@@ -34,4 +41,13 @@ class Products extends Model
       return $this->belongsTo(Type::class);
   }
 
+  public function toArray(): array
+  {
+      return parent::toArray();
+  }
+
+  public function toString(): string
+  {
+     return 'Product with'.$this->id;
+  }
 }

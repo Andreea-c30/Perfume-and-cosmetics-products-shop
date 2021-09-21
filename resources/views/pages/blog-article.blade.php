@@ -3,12 +3,12 @@
 
 
 <div class="container" >
-<h1 >{{$article['name']}}</h1>
+<h1 >{{$article->title}}</h1>
 </div>
 <div class="container-3">
-<img class="article-img" src="https://i.pinimg.com/736x/68/49/83/6849830a1213eb2a1a5b46199a4b97fd.jpg" alt="Image not found" >
-<p>
-When it comes to skin care, your lips don’t often get the pampering they deserve. While you might stay on top of the latest lipstick shades and formulas, that doesn’t mean you’re giving your lips all the TLC they need. Sure, there may be a lip balm or two tucked inside your purse or lying around in your bathroom shelf, but if you really want to get serious about maintaining a perfect pout, it’s time to take a closer look at your lip products.
+<img class="article-img" src="{{$article->image_url}}" alt="{{$article->title}}" >
+<p class="text-center">
+{{$article->description}}
 </p>
 
   <h2 class="text-center">{{$article->title}}</h2>

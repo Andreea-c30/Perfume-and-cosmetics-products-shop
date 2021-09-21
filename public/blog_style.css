@@ -1,25 +1,53 @@
 p,a{
   
-    font-family: "Times New Roman", Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   color: black;
 }
 h2,h5{
-  margin-left: 5cm;
-  font-family: Georgia, 'Times New Roman', Times, serif
+  margin-left: 2cm;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 
 }
-.back{
-  background-color: rgb(248, 209, 238);
+
+.leftcolumn {
+  background: rgb(95, 94, 94);
+  float: left;
+  width: 70%;
+  padding-left: 30px;
+padding-bottom: 20px;;
 }
+
+/* Right column */
+.rightcolumn {
+  background: rgb(95, 94, 94);
+  float: left;
+  width: 30%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.card {
+  background-color: rgba(99, 98, 98, 0.555);
+  padding: 10px;
+  margin-top: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: " ";
+  display: table;
+  clear: both;
+  margin-bottom: 2cm;
+}
+
 
 .imgstyle{
     width: 200px;
-height: 200px;
+height: 100px;
 
 }
 ul {
     list-style-type: none;
-    margin: 1cm;
+    margin: 0cm;
     padding: 0;
   }
 .subtext{
@@ -30,3 +58,10 @@ ul {
 .text{
     margin-top: 0cm;
 }
+.list_item{
+  border-radius: 5px;
+}
+.pagination {
+  display: inline-block;
+}
+
