@@ -6,42 +6,31 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateProductsTable extends Migration
 {
-  
+    
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('product_details_id')->unique();
+               $table->id();
             $table->string('name',255);
             $table->string('image',255)->nullable();
             $table->text('description')->nullable();
-            $table->unsignedBigInteger('type_id');
-            $table->unsignedBigInteger('brand_id');
+            $table->unsignedBigInteger('type_id')->nullable();
+            $table->unsignedBigInteger('brand_id')->nullable();
             $table->decimal('price')->unsigned();
             $table->boolean('available');
-            $table->timestamps();            
-            $table->foreign('product_details_id')
-            ->references('id')
-            ->on('product_details')
-            ->onDelete('CASCADE')
-            ->onUpdate('CASCADE');            
-            $table->foreign('type_id')
+            $table->timestamps();           
+             $table->foreign('type_id')
             ->references('id')
             ->on('types')
-            ->onDelete('CASCADE')
-            ->onUpdate('CASCADE');           
+            ->onDelete('set null');           
              $table->foreign('brand_id')
             ->references('id')
             ->on('brands')
-            ->onDelete('CASCADE')
-            ->onUpdate('CASCADE');
+            ->onDelete('set null');
         });
-    }
+    }   
     public function down()
     {
         Schema::dropIfExists('products');
     }
 }
-
-
-

@@ -1,14 +1,43 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Products;
+use Illuminate\Pagination\Paginator;
+use App\Services\Logging\ViewLogger;
+use App\Models\Products\Products;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
-    public function create()
+  public function __construct(){
+    $this->products = [
+        [
+            'id'=>1,
+            'name'=>'The Best Lip Products with Skin Care Benefits',
+        ],
+      
+        ];
+}
+
+public function index()
+{
+Paginator::useBootstrap();
+$products = Products::paginate(3);
+return view('pages/products',['products'=>$products]);
+}
+
+public function show(int $productId,ViewLogger $viewLogger)
+{
+$product=Products::findOrFail($productId);
+
+$viewLogger->logView($product);
+
+return view('pages/product-article',['product'=>$product]);
+
+} 
+
+  /* public function create()
     {
-        /*
+       
           $products=new Products();
           $products->name='Lipstick';
           $products->description='This is one of the most popular products for  lips';
@@ -25,20 +54,30 @@ class ProductsController extends Controller
           ]);
 */
 //dd(request()->all);
-  $products=Products::create(request()->all());
-dd($products->toArray());
-    }
-    public function view(int $id)
+
+
+
+ // $products=Products::create(request()->all());
+//dd($products->toArray());
+   // }
+
+   /* public function index()
+{
+    
+  return redirect('pages/products');
+}*/
+
+   /* public function view(int $id)
     {
         
   $products=Products::findOrFail($id);
-dd($products->toArray());
+//dd($products->toArray());
     }
 
     public function all()
     {
   $prod=Products::all();
-dd($prod->toArray());
+//dd($prod->toArray());
     }
     
     public function delete(int $id)
@@ -48,5 +87,5 @@ dd($prod->toArray());
   $products->delete();
   return redirect('/products');
 
-    }
+    }*/
 }

@@ -15,6 +15,7 @@
 
           <div class="topnav">
                 <a class="active" href="/">Home</a>
+                <a href="/products">Products</a>
                 <a href="/about">About</a>
                 <a href="/contacts">Contacts</a>
                 <a href="/blog">Blog</a>
