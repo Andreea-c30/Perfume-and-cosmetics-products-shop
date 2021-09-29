@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
-use App\Services\Logging\DummyRequestLogger;
+
+use App\Services\Logging\DebugRequestLogger;
+use App\Services\Logging\ProductionRequestLogger;
 use App\Services\Logging\RequestLoggerInterface;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
@@ -16,10 +18,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(RequestLoggerInterface::class, function(){
-          return $this->app->make(DummyRequestLogger::class);
-        });
         
+        $this->app->bind(RequestLoggerInterface::class, function(){
+          if($this->app->environment('local')){
+           return $this->app->make(ProductionRequestLogger::class);
+         }
+            return $this->app->make(DebugRequestLogger::class);
+          });
+          
     }
 
     /**
