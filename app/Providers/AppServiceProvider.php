@@ -18,12 +18,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        
-        $this->app->bind(RequestLoggerInterface::class, function(){
+        $this->app->singleton(RequestLoggerInterface::class, function(){
+
           if($this->app->environment('local')){
+
            return $this->app->make(ProductionRequestLogger::class);
+
          }
+
             return $this->app->make(DebugRequestLogger::class);
+
           });
           
     }

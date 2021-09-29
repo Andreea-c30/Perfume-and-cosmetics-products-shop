@@ -15,10 +15,12 @@ class ProductionRequestLogger extends AbstractRequestLogger
     protected function extractRequestData(Request $request): array
     {
         return [
+
             'ips' => $request->ips(),
             'url' => $request->url(),
             'input' => $request->all(),
             'method' => $request->method(),
+
         ];
     }
     
